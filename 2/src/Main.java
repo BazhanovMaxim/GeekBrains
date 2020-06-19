@@ -9,6 +9,8 @@ public class Main {
         int[] newArray_firstTask = new int[] {1, 0, 1, 1};
         changeArrayElement(newArray_firstTask);
         System.out.println("\nПервое задание: ");
+        for (int elementOfArray : newArray_firstTask)
+            System.out.println(elementOfArray);
         System.out.println(Arrays.toString(newArray_firstTask));
 
         // Второе задание (2 решения: с циклом и без)
