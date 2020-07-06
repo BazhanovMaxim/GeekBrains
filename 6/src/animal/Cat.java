@@ -6,14 +6,23 @@ public class Cat extends Animal {
         super(name, 200, 2, 0);
     }
 
-    public String catName() {
+    @Override
+    public boolean run( int animalRun) {
+        return animalRun <= getRun();
+    }
+
+    @Override
+    public boolean jump(int animalJump) {
+        return animalJump <= getJump();
+    }
+
+    @Override
+    public boolean swim(int animalSwim) {
+        return false;
+    }
+
+    @Override
+    public String name() {
         return getName();
     }
-
-    public boolean catRun(int run) { return run <= getRun();}
-
-    public boolean catJump(double jump) {
-        return jump <= getJump();
-    }
-
 }

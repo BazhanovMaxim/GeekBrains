@@ -12,15 +12,15 @@ public class Main {
         Pitbull pitbull = new Pitbull("Marabi");
         Beagle beagle = new Beagle("Baron");
 
-        System.out.println(String.format("Name dog: %s, run: %s, jump: %s, swim: %s", dog1.dogName(),
-                dog1.dogRun(450), dog1.dogJump(1), dog1.dogSwim(12)));
+        System.out.println(String.format("Name dog: %s, run: %s, jump: %s, swim: %s", dog1.name(),
+                dog1.run(450), dog1.jump(1), dog1.swim(12)));
 
-        System.out.println(String.format("Name cat: %s, run: %s, jump: %s", cat1.catName(),
-                cat1.catRun(2), cat1.catJump(1)));
+        System.out.println(String.format("Name cat: %s, run: %s, jump: %s", cat1.name(),
+                cat1.run(2), cat1.jump(1)));
 
-        System.out.println(String.format("Name dog: %s, run: %s", pitbull.dogName(), pitbull.pitbullRun(450)));
+        System.out.println(String.format("Name dog: %s, run: %s", pitbull.name(), pitbull.run(601)));
 
-        System.out.println(String.format("Name dog: %s, run: %s", beagle.dogName(), beagle.pitbullRun(450)));
+        System.out.println(String.format("Name dog: %s, run: %s", beagle.name(), beagle.run(450)));
 
     }
 }

@@ -1,6 +1,6 @@
 package animal;
 
-public class Animal {
+public abstract class Animal {
 
     private String name;
     private int run;
@@ -13,6 +13,11 @@ public class Animal {
         this.jump = jump;
         this.swim = swim;
     }
+
+    protected abstract boolean run(int animalRun);
+    protected abstract boolean jump(int animalJump);
+    protected abstract boolean swim(int animalSwim);
+    protected abstract String name();
 
     protected String getName() {
         return name;
