@@ -1,0 +1,24 @@
+@startuml
+
+abstract class Animal
+abstract class GroundAnimal
+abstract class SwimAnimal
+class Dog
+class Cat
+
+Animal : #maxRun
+Animal : #name
+Animal : #maxJump
+Animal : +name(String name)
+Animal : +run(int run)
+Animal : +jump(double jump)
+
+SwimAnimal : #maxSwim
+SwimAnimal : +swim(double swim)
+
+Animal <|-- GroundAnimal
+GroundAnimal <|-- SwimAnimal
+GroundAnimal <|-- Cat
+SwimAnimal <|-- Dog
+
+@enduml

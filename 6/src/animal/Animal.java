@@ -3,35 +3,43 @@ package animal;
 public abstract class Animal {
 
     private String name;
-    private int run;
-    private double jump;
-    private int swim;
+    private int maxRun;
+    private double maxJump;
+    private int satiety;
 
-    public Animal(String name, int run, double jump, int swim) {
+    protected void setSatiety(int satiety) {
+        this.satiety = satiety;
+    }
+
+    protected Animal(String name, int maxRun, double maxJump, int satiety) {
         this.name = name;
-        this.run = run;
-        this.jump = jump;
-        this.swim = swim;
+        this.maxRun = maxRun;
+        this.maxJump = maxJump;
+        this.satiety = satiety;
     }
 
     protected abstract boolean run(int animalRun);
-    protected abstract boolean jump(int animalJump);
-    protected abstract boolean swim(int animalSwim);
+
+    protected abstract boolean satiety(int satiety);
+
+    protected abstract boolean jump(double animalJump);
+
     protected abstract String name();
+
+    protected int getSatiety() {
+        return satiety;
+    }
 
     protected String getName() {
         return name;
     }
 
-    protected int getRun() {
-        return run;
+    protected int getMaxRun() {
+        return maxRun;
     }
 
-    protected double getJump() {
-        return jump;
-    }
-
-    protected int getSwim() {
-        return swim;
+    protected double getMaxJump() {
+        return maxJump;
     }
 }
+

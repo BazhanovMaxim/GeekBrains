@@ -11,9 +11,4 @@ public class Pitbull extends Dog {
     public boolean run(int animalRun) {
         return animalRun <= RUN;
     }
-
-    @Override
-    public String name() {
-        return super.name();
-    }
 }

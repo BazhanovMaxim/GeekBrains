@@ -1,26 +1,65 @@
-import animal.Beagle;
 import animal.Cat;
-import animal.Dog;
-import animal.Pitbull;
+import dishes.Dish;
+import food.DryFood;
+
+import java.util.Random;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Dog dog1 = new Dog("Ram");
-        Cat cat1 = new Cat("Barsik");
-        Pitbull pitbull = new Pitbull("Marabi");
-        Beagle beagle = new Beagle("Baron");
+        lesson7();
+        lesson7_1();
+    }
 
-        System.out.println(String.format("Name dog: %s, run: %s, jump: %s, swim: %s", dog1.name(),
-                dog1.run(450), dog1.jump(1), dog1.swim(12)));
+    /**
+     * 1. Чтобы накормить кота нужно: создать обьект класса "dishes" - посуда/миска, указав
+     * название и обьем еды, который можно положить
+     * 2. Создать обьект кота и указать сытость
+     * 3. Создать обьект еды/пищи
+     * Если в тарелку можно положить тот обьём еды, то пробуем покормить кота/кошку
+     */
+    public static void lesson7() {
+        Cat cat1 = new Cat("Romeo");
+        Dish dish = new Dish("Миска", 50);
+        DryFood dryFood = new DryFood("Сухой корм Вискас", 25);
+        cat1.setSatietyOfAnimals(20);
+        // Если в тарелку можно положить нужный обьем еды (не больше обьема тарелки)
+        if (dish.putFoodDown(dryFood.getCapacityFood())) {
+            if (cat1.satiety(dish.foodIsAllowed())) {
+                // Убираем еду из тарелки
+                dish.removeFood(cat1.getSatiety());
+            }
+        }
+    }
 
-        System.out.println(String.format("Name cat: %s, run: %s, jump: %s", cat1.name(),
-                cat1.run(2), cat1.jump(1)));
+    /**
+     * 5. Создать массив котов и тарелку с едой, попросить всех котов покушать из этой тарелки и потом
+     * вывести информацию о сытости котов в консоль
+     */
+    public static void lesson7_1() {
+        Random random = new Random();
+        Cat[] cats = {
+                new Cat("Bars"),
+                new Cat("Maxi"),
+                new Cat("Poli")
+        };
+        Dish dish = new Dish("Миска", 50);
+        DryFood dryFood = new DryFood("Сухой корм Вискас", 40);
 
-        System.out.println(String.format("Name dog: %s, run: %s", pitbull.name(), pitbull.run(601)));
+        // Вводим сытость кошек путём рандома от 0 до 40
+        for (Cat cat : cats) {
+            cat.setSatietyOfAnimals(random.nextInt(40));
+        }
 
-        System.out.println(String.format("Name dog: %s, run: %s", beagle.name(), beagle.run(450)));
-
+        // Проходим по массиву кошек и если кошке хватает еды, то она ест
+        if (dish.putFoodDown(dryFood.getCapacityFood())) {
+            for (Cat cat : cats) {
+                if (cat.satiety(dish.foodIsAllowed())) {
+                    // Убираем еду из тарелки
+                    dish.removeFood(cat.getSatiety());
+                }
+            }
+        }
     }
 }
