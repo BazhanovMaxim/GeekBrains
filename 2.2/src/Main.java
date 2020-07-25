@@ -9,9 +9,10 @@ public class Main {
         String[] testArray = new String[]{"1", "2", "3", "4",
                 "4", "3", "2", "1",
                 "10", "11", "20", "22",
-                "1", "3", "11", "10"};
+                "1", "3", "11"};
 
-        System.out.println(sumOfArray(fillArray(MAX_LINE, MAX_COLUMN, testArray)));
+        System.out.println(String.format("Сумма массива: %s", sumOfArray(fillArray(MAX_LINE, MAX_COLUMN, testArray))));
+        outputAnArray(fillArray(MAX_LINE, MAX_COLUMN, testArray));
     }
 
     /**
@@ -29,16 +30,12 @@ public class Main {
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[i].length; j++) {
                     matrix[i][j] = elementsOfArray[x];
-                    x = x + 1;
+                    x++;
                 }
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            try {
-                throw new MySizeArrayException(String.format("Элементов мало для заполнения массива.\n" +
-                        "Нужно добавить: %s элемент\n", MAX_COLUMN * MAX_LINE - Integer.parseInt(e.getMessage())) + e);
-            } catch (MySizeArrayException mySizeArrayException) {
-                mySizeArrayException.printStackTrace();
-            }
+        } catch (RuntimeException e) {
+            throw new MySizeArrayException(String.format("Элементов мало для заполнения массива.\n" +
+                    "Нужно добавить: %s элемент\n", MAX_COLUMN * MAX_LINE - Integer.parseInt(e.getMessage())) + e);
         }
         return matrix;
     }
@@ -56,16 +53,11 @@ public class Main {
             for (int j = 0; j < array[0].length; j++) {
                 try {
                     sumOfArray += Integer.parseInt(array[i][j]);
-                } catch (NumberFormatException e) {
-                    try {
-                        throw new MyArrayDataException(String.format("Неверный элемент массива, строка: %s, столбец: %s\n", i + 1, j + 1) + e);
-                    } catch (MyArrayDataException myArrayDataException) {
-                        myArrayDataException.printStackTrace();
-                    }
+                } catch (RuntimeException e) {
+                    throw new MyArrayDataException(String.format("Неверный элемент массива, строка: %s, столбец: %s\n", i + 1, j + 1) + e);
                 }
             }
         }
-
         return sumOfArray;
     }
 
@@ -83,6 +75,4 @@ public class Main {
             System.out.println();
         }
     }
-
-
 }
