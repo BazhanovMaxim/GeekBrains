@@ -1,0 +1,22 @@
+@startuml
+
+interface Catalog
+interface FruitList
+
+FruitList <|.. Fruit
+Catalog <|.. TelephoneCatalog
+
+Catalog : +void add(Object number, Object surname)
+Catalog : +void (Object surname)
+Catalog : +void print()
+
+FruitList : +void add(Object nameOfFruit)
+FruitList : +boolean remove(Object nameOfFruit)
+FruitList : +void findUnique()
+FruitList : +void repeatWords()
+
+Fruit : -List<String> fruits
+Human : -String surname
+HumanTelephones : -long humanTelephones
+
+@enduml
