@@ -16,7 +16,7 @@ public class CalculationArray implements Runnable {
      * Изменение массива по формуле
      * @param array массив-источник
      */
-    private synchronized void changeArray(float[] array) {
+    private void changeArray(float[] array) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < array.length; i++) {
             array[i] = (float) (array[i] * Math.sin(0.2f + i / 5f) * Math.cos(0.2f + i / 5f) * Math.cos(0.4f + i / 2f));
