@@ -20,9 +20,23 @@ public class SendMessageThread implements Runnable {
         try {
             while (running) {
                 String message = reader.readLine();
+                if (message.equalsIgnoreCase("/end")){
+                    out.write(message + "Соединение закрыто.\n");
+                    closeConnection();
+                    break;
+                }
                 out.write(message + "\n");
                 out.flush();
             }
+        } catch (IOException e) {
+            System.out.println("Соединение закрыто.");
+        }
+    }
+
+    private void closeConnection(){
+        try {
+            out.close();
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

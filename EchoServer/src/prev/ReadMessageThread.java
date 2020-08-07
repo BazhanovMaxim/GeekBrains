@@ -22,8 +22,24 @@ public class ReadMessageThread implements Runnable {
         try {
             while (running) {
                 String userMessage = in.readLine();
+                if (userMessage.equalsIgnoreCase("/end")) {
+                    System.out.printf("%s : %s\n", clientSocket.getLocalSocketAddress(), userMessage);
+                    closeConnection();
+                    break;
+                }
                 System.out.printf("%s : %s\n", clientSocket.getLocalSocketAddress(), userMessage);
             }
+        } catch (IOException e) {
+            System.out.println("Соединение закрыто.");
+        }
+    }
+
+
+    private void closeConnection(){
+        try {
+            clientSocket.close();
+            in.close();
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
