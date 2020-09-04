@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
-        Semaphore semaphore = new Semaphore(2, true);
+        Semaphore semaphore = new Semaphore(3, true);
         Auto[] auto = {new Car("BMW X5", semaphore),
                 new Car("Mercedes-Benz X166", semaphore),
                 new Car("Lada Kalina", semaphore),
