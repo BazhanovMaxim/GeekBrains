@@ -17,14 +17,11 @@ public class CalculatorTest {
 
     @BeforeSuite
     public void setUp() {
-        System.out.println("Запуск тестов");
         calculator = new Calculator();
     }
 
     @AfterSuite
-    public void after() {
-        System.out.println("Тесты завершены");
-    }
+    public void after() {}
 
     @Test(order = 1)
     public boolean firstTest() {
