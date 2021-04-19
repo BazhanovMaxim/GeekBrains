@@ -1,0 +1,5 @@
+target/
+.idea/
+*.iml
+classes/
+.flattened-pom.xml
