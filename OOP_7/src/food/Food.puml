@@ -1,0 +1,16 @@
+@startuml
+
+abstract class Food
+class LiquidFood
+class DryFood
+
+Food : #title
+Food : #capacity
+Food : +title(String title)
+Food : +capacity(int capacity)
+
+
+Food <|-- LiquidFood
+Food <|-- DryFood
+
+@enduml
