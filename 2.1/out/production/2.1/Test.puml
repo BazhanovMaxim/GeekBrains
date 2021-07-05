@@ -1,0 +1,50 @@
+@startuml
+
+interface Behavior
+
+abstract class Participants
+abstract class Animal
+abstract class Person
+abstract class Organic
+abstract class Inorganic
+abstract class Robot
+abstract class Obstacle
+class Treadmill
+class Wall
+
+Behavior : +jump()
+Behavior : +run()
+
+Obstacle : #float height
+Obstacle : #float length
+Obstacle : +float getHeight()
+Obstacle : +float getLength()
+
+Participants : #String name
+Participants : #float maxRunOfParticipants
+Participants : #float maxJumpOfParticipants
+Participants : +boolean run(float lengthOfTreadmill)
+Participants : +boolean jump(float heightOfWall)
+
+Behavior <.. Participants
+
+Obstacle <-- Wall
+Obstacle <-- Treadmill
+
+Participants <-- Organic
+Participants <-- Inorganic
+
+Inorganic <-- Robot
+
+Organic <-- Animal
+Organic <-- Person
+
+Robot <-- MilitaryRobot
+
+Person <-- Man
+Person <-- Woman
+
+Animal <-- Cat
+Animal <-- Dog
+
+@enduml
